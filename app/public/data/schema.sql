@@ -10,7 +10,7 @@ CREATE TABLE Referee(Member_ID INT NOT NULL PRIMARY KEY auto_increment,
 
                     First_Name VARCHAR(25) NOT NULL, Last_Name VARCHAR(25) NOT NULL,
 
-                     Age INT, Referee_ Skill INT, Referee_Status TEXT);
+                     Age INT, Referee_Skill INT, Referee_Status TEXT);
 
 
 
