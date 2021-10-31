@@ -3,9 +3,9 @@ const Offer = {
     data() {
       return {
         "person": undefined,
-        "books":[],
-        "booksForm": {},
-        "selectedBook": null
+        "referee":[],
+        "refereeForm": {},
+        "selectedReferee": null
         }
     },
     computed: {
@@ -15,75 +15,54 @@ const Offer = {
         }
     },
     methods: {
-        fetchUserData(){
-            console.log("A");
-            fetch('https://randomuser.me/api/')
+        //FetchReferee
+        fetchRefereeData(){
+            fetch('/api/referee/')
             .then( response => response.json() )
             .then( (responseJson) => {
                 console.log(responseJson);
-                console.log("C");
-                this.person = responseJson.results[0];
-                d = new Date(this.person.dob.date)
-                this.person.dob.formatted_date = d.toISOString().substring(0, 10)
-                console.log("####### ",this.person.picture.large)
-    
+                this.referee = responseJson;
+                console.log(this.referee);
             })
             .catch( (err) => {
-                console.error(err);
-            })
-            console.log("B");
-
-        },
-        //FetchBook
-        fetchBookData(){
-            fetch('/api/books/')
-            .then( response => response.json() )
-            .then( (responseJson) => {
-                console.log(responseJson);
-                this.books = responseJson;
-                console.log(this.books);
-            })
-            .catch( (err) => {
-                console.log(this.books);
+                console.log(this.referee);
                 console.error(err);
             })
         },
-        postNewBook(evt) {
-            // this.booksForm.id = this.selectedbooks.id;        
-            console.log("Posting:", this.booksForm);
+        postNewReferee(evt) {
+            console.log("Posting:", this.refereeForm);
             // alert("Posting!");
         
-            fetch('api/books/create.php', {
+            fetch('api/referee/create.php', {
                 method:'POST',
-                body: JSON.stringify(this.booksForm),
+                body: JSON.stringify(this.refereeForm),
                 headers: {
                   "Content-Type": "application/json; charset=utf-8"
                 }
               })
               .then( response => {
-                this.fetchBookData();
+                this.fetchRefereeData();
               })
   
           },
 
     // Update book
-      postBook(evt) {
-            console.log ("Test:", this.selectedBook);
-            if (this.selectedBook) {
-                this.postEditBook(evt);
+      postReferee(evt) {
+            console.log ("Test:", this.selectedReferee);
+            if (this.selectedReferee) {
+                this.postEditReferee(evt);
             } else {
-                this.postNewBook(evt);
+                this.postNewReferee(evt);
             }
         },
 
-    postEditBook(evt) {
-        this.booksForm.id = this.selectedBook.id;       
+    postEditReferee(evt) {
+        this.refereeForm.id = this.selectedReferee.id;       
 
-        console.log("Editing!", this.booksOffer);
-
-        fetch('api/books/update.php', {
+        console.log("Editing")
+        fetch('api/referee/update.php', {
             method:'POST',
-            body: JSON.stringify(this.booksForm),
+            body: JSON.stringify(this.refereeForm),
             headers: {
                 "Content-Type": "application/json; charset=utf-8"
                 }
@@ -92,23 +71,23 @@ const Offer = {
             .then( json => {
             console.log("Returned from post:", json);
             // TODO: test a result was returned!
-            this.books = json;
+            this.referee = json;
 
             // reset the form
             this.handleResetEdit();
             });
         },
     //delete book
-    postDeleteBook(bk) {  
-        if ( !confirm("Are you sure you want to delete the offer from " + bk.Title + "?") ) {
+    postDeleteReferee(rf) {  
+        if ( !confirm("Are you sure you want to delete the offer from " +rf.firstname +" " +rf.lastname +"?") ) {
             return;
         }  
 
-        console.log("Delete!", bk);
+        console.log("Delete!", rf);
 
-        fetch('api/books/delete.php', {
+        fetch('api/referee/delete.php', {
             method:'POST',
-            body: JSON.stringify(bk),
+            body: JSON.stringify(rf),
             headers: {
                 "Content-Type": "application/json; charset=utf-8"
             }
@@ -117,27 +96,27 @@ const Offer = {
             .then( json => {
             console.log("Returned from post:", json);
             // TODO: test a result was returned!
-            this.books = json;
+            this.referee = json;
 
             // reset the form
-            this.handleResetEditBooks();
+            this.handleResetEditReferee();
             });
         },
 
     
-          handleEditBooks(book) {
+          handleEditReferee(book) {
             console.log("selecting", book);
-            this.selectedBook = book;
-            this.booksForm = Object.assign({}, this.selectedBook);
+            this.selectedReferee = book;
+            this.refereeForm = Object.assign({}, this.selectedReferee);
           },
-          handleResetEditBook() {
-            this.selectedBook = null;
-            this.booksForm = {};
+          handleResetEditReferee() {
+            this.selectedReferee = null;
+            this.refereeForm = {};
           }
     },
     created() {
-        this.fetchUserData();
-        this.fetchBookData();
+        
+        this.fetchRefereeData();
     } //end created
 } // end Offer config
 Vue.createApp(Offer).mount('#offerApp');

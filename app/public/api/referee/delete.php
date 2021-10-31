@@ -24,25 +24,11 @@ $db = DbConnection::getConnection();
 // Step 2: Create & run the query
 // Note the use of parameterized statements to avoid injection
 $stmt = $db->prepare(
-  'UPDATE Book SET 
-  Title= ?,
-  Author = ?,
-  Year_Published = ?,
-  Publisher = ?,
-  Page_Count = ?,
-  MSRP = ?
-WHERE id = ?'
+  'DELETE FROM referee WHERE id = ?'
 );
 
 $stmt->execute([
-  $_POST['Title'],
-  $_POST['Author'],
-  $_POST['Year_published'],
-  $_POST['Publisher'],
-  $_POST['Page_Count'],
-  $_POST['MSRP'],
   $_POST['id']
-
 ]);
 
 // Get auto-generated PK from DB
@@ -53,4 +39,5 @@ $stmt->execute([
 // Here, instead of giving output, I'm redirecting to the SELECT API,
 // just in case the data changed by entering it
 header('HTTP/1.1 303 See Other');
-header('Location: ../books/');
+header('Location: ../referee/');
+// © 2021 GitHub, Inc.

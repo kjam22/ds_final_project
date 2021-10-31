@@ -1,5 +1,10 @@
 <?php
 
+// if (($_SERVER['REQUEST_METHOD'] ?? '') != 'POST') {
+//     header($_SERVER["SERVER_PROTOCOL"] . " 405 Method Not Allowed");
+//     exit;
+// }
+
 try {
     $_POST = json_decode(
                 file_get_contents('php://input'), 
@@ -9,6 +14,8 @@ try {
             );
 } catch (Exception $e) {
     header($_SERVER["SERVER_PROTOCOL"] . " 400 Bad Request");
+    // print_r($_POST);
+    // echo file_get_contents('php://input');
     exit;
 }
 
@@ -24,12 +31,23 @@ $db = DbConnection::getConnection();
 // Step 2: Create & run the query
 // Note the use of parameterized statements to avoid injection
 $stmt = $db->prepare(
-  'DELETE FROM Book WHERE id = ?'
+  'INSERT INTO referee (firstname, lastname, grade, age, skill, rstatus)
+  VALUES (?, ?, ?, ?, ?, ?)'
 );
 
 $stmt->execute([
-  $_POST['id']
+  
+  $_POST['firstname'],
+  $_POST['lastname'],
+  $_POST['grade'],
+  $_POST['age'],
+  $_POST['skill'],
+  $_POST['rstatus']
 ]);
+if (!$stmt -> commit()) {
+  echo "Commit transaction failed";
+  exit();
+}
 
 // Get auto-generated PK from DB
 // https://www.php.net/manual/en/pdo.lastinsertid.php
@@ -39,5 +57,4 @@ $stmt->execute([
 // Here, instead of giving output, I'm redirecting to the SELECT API,
 // just in case the data changed by entering it
 header('HTTP/1.1 303 See Other');
-header('Location: ../books/');
-// © 2021 GitHub, Inc.
+header('Location: ../referee/?referee=' . $_POST['refereeId']);

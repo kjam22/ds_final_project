@@ -1,10 +1,5 @@
 <?php
 
-// if (($_SERVER['REQUEST_METHOD'] ?? '') != 'POST') {
-//     header($_SERVER["SERVER_PROTOCOL"] . " 405 Method Not Allowed");
-//     exit;
-// }
-
 try {
     $_POST = json_decode(
                 file_get_contents('php://input'), 
@@ -14,8 +9,6 @@ try {
             );
 } catch (Exception $e) {
     header($_SERVER["SERVER_PROTOCOL"] . " 400 Bad Request");
-    // print_r($_POST);
-    // echo file_get_contents('php://input');
     exit;
 }
 
@@ -28,26 +21,30 @@ require("class/DbConnection.php");
 // Step 1: Get a datase connection from our helper class
 $db = DbConnection::getConnection();
 
+
 // Step 2: Create & run the query
 // Note the use of parameterized statements to avoid injection
 $stmt = $db->prepare(
-  'INSERT INTO Book (Title, Author, Year_Published, Publisher, Page_Count, MSRP)
-  VALUES (?, ?, ?, ?, ?, ?)'
+  'UPDATE referee SET 
+  firstname= ?,
+  lastname = ?,
+  grade = ?,
+  age = ?,
+  skill = ?,
+  rstatus= ?
+WHERE id = ?'
 );
 
 $stmt->execute([
-  
-  $_POST['Title'],
-  $_POST['Author'],
-  $_POST['Year_Published'],
-  $_POST['Publisher'],
-  $_POST['Page_Count'],
-  $_POST['MSRP']
+  $_POST['firstname'],
+  $_POST['lastname'],
+  $_POST['grade'],
+  $_POST['age'],
+  $_POST['skill'],
+  $_POST['rstatus'],
+  $_POST['id']
+
 ]);
-if (!$stmt -> commit()) {
-  echo "Commit transaction failed";
-  exit();
-}
 
 // Get auto-generated PK from DB
 // https://www.php.net/manual/en/pdo.lastinsertid.php
@@ -57,4 +54,4 @@ if (!$stmt -> commit()) {
 // Here, instead of giving output, I'm redirecting to the SELECT API,
 // just in case the data changed by entering it
 header('HTTP/1.1 303 See Other');
-header('Location: ../books/?book=' . $_POST['bookId']);
+header('Location: ../referee/');
