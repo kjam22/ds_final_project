@@ -16,7 +16,8 @@ CREATE TABLE referee(id INT NOT NULL PRIMARY KEY auto_increment,
 
 CREATE TABLE game(id INT NOT NULL PRIMARY KEY auto_increment, 
 field varchar(100), 
-gdatetime datetime DEFAULT current_timestamp);
+gdate date,
+gtime time(6));
 
 
 -- A report can be generated with joins
@@ -41,15 +42,15 @@ INSERT INTO  referee (firstname, lastname,grade,age,skill,rstatus) VALUES
 
 
 
-INSERT INTO game (field)VALUES
+INSERT INTO game (field, gdate, gtime)VALUES
 
-    ('field1'),
+    ('field1', '1-28-2018', '13:30:00'),
 
-    ('field2'),
+    ('field2', '1-28-2018', '13:30:00'),
 
-    ('field3'),
+    ('field3', '1-28-2018', '13:30:00'),
 
-    ('field4');
+    ('field4' ,'1-28-2018', '13:30:00');
 
 
 
