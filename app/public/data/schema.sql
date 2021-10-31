@@ -5,29 +5,29 @@ DROP TABLE IF EXISTS referee;
 
 DROP TABLE IF EXISTS report;
 DROP TABLE IF EXISTS game;
+DROP TABLE IF EXISTS sportuser;
 
 CREATE TABLE referee(id INT NOT NULL PRIMARY KEY auto_increment, 
 
                     firstname VARCHAR(25) NOT NULL, lastname VARCHAR(25) NOT NULL, grade VARCHAR(25) NOT NULL,
 
-                     Age INT, Referee_Skill INT, Referee_Status VARCHAR(25));
+                     age INT, skill INT, rstatus VARCHAR(25));
 
 
 CREATE TABLE game(id INT NOT NULL PRIMARY KEY auto_increment, 
 field varchar(100), 
-gDate DATE
-gtime TIME DEFAULT CURRENT_TIMESTAMP);
+gdatetime datetime DEFAULT current_timestamp);
 
 
 -- A report can be generated with joins
 -- CREATE TABLE report(id INT NOT NULL PRIMARY KEY auto_increment, 
 -- Game_ID INT, Game_Date DATE, Assigned_Referee TEXT);
 
-CREATE TABLE user (id INT NOT NULL PRIMARY KEY auto_increment, assignor BOOLEAN);
+CREATE TABLE sportuser (id INT NOT NULL PRIMARY KEY auto_increment, assignor BOOLEAN);
 -- if user is assignor then show skill and status else name,age, grade
 
 
-INSERT INTO referee VALUES
+INSERT INTO  referee (firstname, lastname,grade,age,skill,rstatus) VALUES
 
      ('Kevin','Kim', 'National', 32,70,'Unassigned'),
 
@@ -41,15 +41,15 @@ INSERT INTO referee VALUES
 
 
 
-INSERT INTO game VALUES
+INSERT INTO game (field)VALUES
 
-    ('field1','2021-11-01'),
+    ('field1'),
 
-    ('field2', '2021-11-02'),
+    ('field2'),
 
-    ('field3', '2021-11-04'),
+    ('field3'),
 
-    ('field4', '2021-11-06');
+    ('field4');
 
 
 
@@ -63,3 +63,4 @@ INSERT INTO game VALUES
 
 --      (4, 104, '2021-12-11', 'Tom Gregory');     
 
+select * from referee;
