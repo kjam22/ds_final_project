@@ -1,4 +1,4 @@
 MYSQL_USER=admin
 MYSQL_PASSWORD=1234abcde
-MYSQL_DATABASE=msisdb
-MYSQL_HOST=msisdb.cevd2eym2ffp.us-east-2.rds.amazonaws.com
+MYSQL_DATABASE=finaldb
+MYSQL_HOST=finaldb.cevd2eym2ffp.us-east-2.rds.amazonaws.com
