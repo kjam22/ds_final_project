@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <title>repl.it</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://code.jquery.com/jquery-3.2.1.js"></script> <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <link href="css/style.css" rel="stylesheet" type="text/css" />
+    <script src="https://unpkg.com/vue@next"></script>
+  </head>
+
+<body>
+  <h1><img class="logo" src="img/fb3.png" alt="logo"/>&#160 Indiana Soccer Referees Association</h1>
+  <div id="gamejs" class = "container-fluid">
+    <div class = "row">
+      <nav class="mynav">
+        <div class="navbar-header">
+          <button class="navbar-toggle" data-toggle="collapse" data-target="#MyMenu">
+          Menu
+          </button>
+        </div>
+
+        <div class="collapse navbar-collapse" id="MyMenu">
+            <ul class="nav navbar-nav">
+                <li><a href = "index.html">Home</a></li>
+                <li><a href = "referee.html">Referee Info</a></li>
+                <li><a href = "game.html">Game Info</a></li>
+              </ul>
+
+      </div>
+    </nav>
+   <main>
+    <h1>Referee Information</h1>
+    <table class="table table-bordered table-striped table-hover table-condensed">
+      <thead>
+        <tr>
+          <th class="text-center">Field</th>	
+          <th class="text-center">Date</th>	
+          <th class="text-center">Time</th>         
+        </tr>
+      </thead>
+      <tbody>
+          <tr v-for="gm in game">
+            <td>{{ gm.field }}</td> 
+            <td>{{ gm.gdate }}</td> 
+            <td>{{ gm.gtime }}</td> 
+            <td>
+              <button type="button" v-on:click="handleEditGame(gm)" class="btn btn-outline-secondary btn-sm">Edit</button>
+                        <button type="button" class="btn btn-outline-secondary btn-sm" v-on:click="postDeleteGame(gm)">Delete</button>
+            </td>
+          </tr>
+
+      </tbody>
+    </table>
+  
+  </div>
+
+      <header>
+      Form
+    </header>
+    
+     <h4>Input fields to be entered as a row in the table</h4><br>
+  <form v-on:submit.prevent="postGame">
+    <div class="form-group">
+    <label for="field">Field</label>
+    <input type="text" v-model="gameForm.field" class="form-control" id="field" placeholder="Enter Field Name"><br>
+    <label for="gdate">Date</label>
+    <input type="date"  placeholder="dd-mm-yyyy" v-model="gameForm.gdate" class="form-control" id="gdate"><br>
+    <label for="gtime">Grade</label>
+    <input type="time" v-model="gameForm.gtime" class="form-control" id="gtime" placeholder="Enter Time"><br>
+  </div>
+  <button type="submit" class="btn btn-primary">{{ selectedGame === null ? "Add " : "Edit " }} Game</button>
+  <button type="button" class="btn btn-outline-secondary" 
+     v-if="selectedGame"
+     v-on:click="handleResetEditGame ">Cancel Edit</button><br><br><br>
+</form>
+<script src="js/game.js"></script>
+</main>
+
+   <div class = "row">
+<footer> 
+Indiana Soccer Referee Association | Phone: (325)-325-3488 | 10th Street, Bloomington</footer>
+    </div>
+    </div>
+  </body>
+</html>

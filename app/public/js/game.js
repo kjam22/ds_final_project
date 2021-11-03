@@ -1,11 +1,10 @@
 
-const Offer = {
+const Game = {
     data() {
       return {
-        "person": undefined,
-        "referee":[],
-        "refereeForm": {},
-        "selectedReferee": null
+        "game":[],
+        "gameForm": {},
+        "selectedGame": null
         }
     },
     computed: {
@@ -15,54 +14,54 @@ const Offer = {
         }
     },
     methods: {
-        //FetchReferee
-        fetchRefereeData(){
-            fetch('/api/referee/')
+        //FetchGame
+        fetchGameData(){
+            fetch('/api/game/')
             .then( response => response.json() )
             .then( (responseJson) => {
                 console.log(responseJson);
-                this.referee = responseJson;
-                console.log(this.referee);
+                this.game = responseJson;
+                console.log(this.game);
             })
             .catch( (err) => {
-                console.log(this.referee);
+                console.log(this.game);
                 console.error(err);
             })
         },
-        postNewReferee(evt) {
-            console.log("Posting:", this.refereeForm);
+        postNewGame(evt) {
+            console.log("Posting:", this.gameForm);
             // alert("Posting!");
         
-            fetch('api/referee/create.php', {
+            fetch('api/game/create.php', {
                 method:'POST',
-                body: JSON.stringify(this.refereeForm),
+                body: JSON.stringify(this.gameForm),
                 headers: {
                   "Content-Type": "application/json; charset=utf-8"
                 }
               })
               .then( response => {
-                this.fetchRefereeData();
+                this.fetchGameData();
               })
   
           },
 
     // Update book
-      postReferee(evt) {
-            console.log ("Test:", this.selectedReferee);
-            if (this.selectedReferee) {
-                this.postEditReferee(evt);
+      postGame(evt) {
+            console.log ("Test:", this.selectedGame);
+            if (this.selectedGame) {
+                this.postEditGame(evt);
             } else {
-                this.postNewReferee(evt);
+                this.postNewGame(evt);
             }
         },
 
-    postEditReferee(evt) {
-        this.refereeForm.id = this.selectedReferee.id;       
+    postEditGame(evt) {
+        this.gameForm.id = this.selectedGame.id;       
 
         console.log("Editing")
-        fetch('api/referee/update.php', {
+        fetch('api/game/update.php', {
             method:'POST',
-            body: JSON.stringify(this.refereeForm),
+            body: JSON.stringify(this.gameForm),
             headers: {
                 "Content-Type": "application/json; charset=utf-8"
                 }
@@ -71,21 +70,21 @@ const Offer = {
             .then( json => {
             console.log("Returned from post:", json);
             // TODO: test a result was returned!
-            this.referee = json;
+            this.game = json;
 
             // reset the form
             this.handleResetEdit();
             });
         },
     //delete book
-    postDeleteReferee(rf) {  
-        if ( !confirm("Are you sure you want to delete the referee " +rf.firstname +" " +rf.lastname +"?") ) {
+    postDeleteGame(rf) {  
+        if ( !confirm("Are you sure you want to delete the game " +rf.field +" " +rf.gdate +"?") ) {
             return;
         }  
 
         console.log("Delete!", rf);
 
-        fetch('api/referee/delete.php', {
+        fetch('api/game/delete.php', {
             method:'POST',
             body: JSON.stringify(rf),
             headers: {
@@ -96,29 +95,27 @@ const Offer = {
             .then( json => {
             console.log("Returned from post:", json);
             // TODO: test a result was returned!
-            this.referee = json;
+            this.game = json;
 
             // reset the form
-            this.handleResetEditReferee();
+            this.handleResetEditGame();
             });
         },
 
     
-          handleEditReferee(book) {
+          handleEditGame(book) {
             console.log("selecting", book);
-            this.selectedReferee = book;
-            this.refereeForm = Object.assign({}, this.selectedReferee);
+            this.selectedGame = book;
+            this.gameForm = Object.assign({}, this.selectedGame);
           },
-          handleResetEditReferee() {
-            this.selectedReferee = null;
-            this.refereeForm = {};
+          handleResetEditGame() {
+            this.selectedGame = null;
+            this.gameForm = {};
           }
     },
     created() {
         
-        this.fetchRefereeData();
+        this.fetchGameData();
     } //end created
 } // end Offer config
-Vue.createApp(Offer).mount('#refereejs');
-
-console.log("Z");
+Vue.createApp(Game).mount('#gamejs');
