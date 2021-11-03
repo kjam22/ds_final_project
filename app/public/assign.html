@@ -42,10 +42,10 @@
         </tr>
       </thead>
       <tbody>
-          <tr v-for="gm in game">
-            <td>{{ gm.field }}</td> 
-            <td>{{ gm.gdate }}</td> 
-            <td>{{ gm.gtime }}</td> 
+          <tr v-for="asgn in assign">
+            <td>{{ asgn.refereeid }}</td> 
+            <td>{{ asgn.gameid }}</td> 
+            <!-- <td>{{ asgn. }}</td>  -->
             <td>
               <button type="button" v-on:click="handleEditGame(gm)" class="btn btn-outline-secondary btn-sm">Edit</button>
                         <button type="button" class="btn btn-outline-secondary btn-sm" v-on:click="postDeleteGame(gm)">Delete</button>

@@ -10,7 +10,7 @@ DROP TABLE IF EXISTS referee;
 
 CREATE TABLE referee(id INT NOT NULL PRIMARY KEY auto_increment, 
 
-                    firstname VARCHAR(25) NOT NULL, lastname VARCHAR(25) NOT NULL, grade VARCHAR(25) NOT NULL,
+                    firstname VARCHAR(25) NOT NULL, lastname VARCHAR(25) NOT NULL, grade VARCHAR(25) NOT NULL, position VARCHAR(25),
 
                      age INT, skill INT, rstatus VARCHAR(25));
 
