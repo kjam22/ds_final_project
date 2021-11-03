@@ -1,11 +1,12 @@
 CREATE DATABASE IF NOT EXISTS finaldb;
 USE finaldb;
 
-DROP TABLE IF EXISTS referee;
-
+DROP TABLE IF EXISTS sportuser;
+DROP TABLE IF EXISTS assign;
 DROP TABLE IF EXISTS report;
 DROP TABLE IF EXISTS game;
-DROP TABLE IF EXISTS sportuser;
+DROP TABLE IF EXISTS referee;
+
 
 CREATE TABLE referee(id INT NOT NULL PRIMARY KEY auto_increment, 
 
@@ -18,6 +19,14 @@ CREATE TABLE game(id INT NOT NULL PRIMARY KEY auto_increment,
 field varchar(100), 
 gdate date,
 gtime time(6));
+
+CREATE TABLE assign
+(id INT NOT NULL PRIMARY KEY auto_increment, 
+refereeid INT,
+gameid INT,
+foreign key (refereeid) references referee(id),
+foreign key (gameid) references game(id));
+
 
 
 -- A report can be generated with joins
@@ -64,4 +73,4 @@ INSERT INTO game (field, gdate, gtime)VALUES
 
 --      (4, 104, '2021-12-11', 'Tom Gregory');     
 
-select * from referee;
+select * from assign;
