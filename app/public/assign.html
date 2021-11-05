@@ -12,7 +12,7 @@
 
 <body>
   <h1><img class="logo" src="img/fb3.png" alt="logo"/>&#160 Indiana Soccer Referees Association</h1>
-  <div id="gamejs" class = "container-fluid">
+  <div id="assignjs" class = "container-fluid">
     <div class = "row">
       <nav class="mynav">
         <div class="navbar-header">
@@ -45,7 +45,6 @@
           <tr v-for="asgn in assign">
             <td>{{ asgn.refereeid }}</td> 
             <td>{{ asgn.gameid }}</td> 
-            <!-- <td>{{ asgn. }}</td>  -->
             <td>
               <button type="button" v-on:click="handleEditGame(gm)" class="btn btn-outline-secondary btn-sm">Edit</button>
                         <button type="button" class="btn btn-outline-secondary btn-sm" v-on:click="postDeleteGame(gm)">Delete</button>
@@ -62,21 +61,33 @@
     </header>
     
      <h4>Input fields to be entered as a row in the table</h4><br>
-  <form v-on:submit.prevent="postGame">
-    <div class="form-group">
-    <label for="field">Field</label>
-    <input type="text" v-model="gameForm.field" class="form-control" id="field" placeholder="Enter Field Name"><br>
-    <label for="gdate">Date</label>
-    <input type="date"  placeholder="dd-mm-yyyy" v-model="gameForm.gdate" class="form-control" id="gdate"><br>
-    <label for="gtime">Grade</label>
-    <input type="time" v-model="gameForm.gtime" class="form-control" id="gtime" placeholder="Enter Time"><br>
-  </div>
-  <button type="submit" class="btn btn-primary">{{ selectedGame === null ? "Add " : "Edit " }} Game</button>
-  <button type="button" class="btn btn-outline-secondary" 
-     v-if="selectedGame"
-     v-on:click="handleResetEditGame ">Cancel Edit</button><br><br><br>
-</form>
-<script src="js/game.js"></script>
+     <form v-on:submit.prevent="postAssignment">
+      <label for="assignment_game">Choose a Game:&nbsp;&nbsp;&nbsp;</label>
+      <select v-model ="assignForm.game_id">
+        <option> Select</option>
+        <option v-for = "g in game" value = "g.id">{{g.id}},{{g.field}}, {{g.gtime}}</option>
+      </select> 
+      <br> 
+      <label for="assignment_referee">Choose a referee:&nbsp;&nbsp;&nbsp;</label>
+      <select v-model ="assignForm.referee_id">
+        <option> Select</option>
+        <option v-for = "r in referee" value = "r.id">{{r.id}} - {{r.firstname}}- {{r.lastname}}</option>
+      </select>
+      <br> 
+      <label for="assignment_refereeStatus">Choose a referee:&nbsp;&nbsp;&nbsp;</label>
+      <select v-model ="assignForm.referee_status">
+        <option> Select</option>
+        <option> unassigned</option>
+        <option> assigned</option>
+        <option> tentative</option>
+        <option> accepted</option>
+      </select> 
+        <br><br><br>
+        
+      <button type="submit" class="btn btn-primary">{{ selectedAssignment === null ? "Add " : "Edit " }} Assignment</button>
+      <button type="button" class="btn btn-warning" v-if="selectedAssign" v-on:click="handleResetEdit">Cancel Edit</button>                 
+   </form>
+<script src="js/assign.js"></script>
 </main>
 
    <div class = "row">

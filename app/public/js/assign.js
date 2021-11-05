@@ -3,13 +3,17 @@ const Asgn = {
     data() {
       return {
         "person": undefined,
-        "assign":[],
+        "assign":{},
         "refereeForm": {},
-        "selectedReferee": null
+        "selectedReferee": null,
+        "game": [],
+        "referee": [],
+        "assignForm":{},
+
         }
     },
     methods: {
-        //FetchReferee
+        // FetchReferee
         fetchAssignData(){
             fetch('/api/assign/')
             .then( response => response.json() )
@@ -23,12 +27,38 @@ const Asgn = {
                 console.error(err);
             })
         },
- 
+        fetchRefereeData(){
+            fetch('/api/referee/')
+            .then( response => response.json() )
+            .then( (responseJson) => {
+                console.log(responseJson);
+                this.referee = responseJson;
+                console.log(this.referee);
+            })
+            .catch( (err) => {
+                console.log(this.referee);
+                console.error(err);
+            })
+        },
+        fetchGameData(){
+            fetch('/api/game/')
+            .then( response => response.json() )
+            .then( (responseJson) => {
+                console.log(responseJson);
+                this.game = responseJson;
+                console.log(this.game);
+            })
+            .catch( (err) => {
+                console.log(this.game);
+                console.error(err);
+            })
+        },
     },
-    created() {
-        
+    created () {
+        this.fetchGameData();
+        this.fetchRefereeData();
         this.fetchAssignData();
-    } //end created
+    } // end created
 } // end Offer config
 Vue.createApp(Asgn).mount('#assignjs');
 
