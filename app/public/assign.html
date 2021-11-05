@@ -36,18 +36,46 @@
     <table class="table table-bordered table-striped table-hover table-condensed">
       <thead>
         <tr>
-          <th class="text-center">Field</th>	
-          <th class="text-center">Date</th>	
-          <th class="text-center">Time</th>         
+          <th class="text-center">RefereeID</th>	
+          <th class="text-center">GameID</th>	
+          <th class="text-center">Assign Status</th>         
         </tr>
       </thead>
       <tbody>
           <tr v-for="asgn in assign">
             <td>{{ asgn.refereeid }}</td> 
             <td>{{ asgn.gameid }}</td> 
+            <td>{{ asgn.assign_status }}</td>
             <td>
-              <button type="button" v-on:click="handleEditGame(gm)" class="btn btn-outline-secondary btn-sm">Edit</button>
-                        <button type="button" class="btn btn-outline-secondary btn-sm" v-on:click="postDeleteGame(gm)">Delete</button>
+              <button type="button" v-on:click="handleEditAssign(asgn)" class="btn btn-outline-secondary btn-sm">Edit</button>
+                        <button type="button" class="btn btn-outline-secondary btn-sm" v-on:click="postDeleteAssign(asgn)">Delete</button>
+            </td>
+          </tr>
+
+      </tbody>
+    </table>
+    <h1>Referee, Game and Assign Information</h1>
+    <table class="table table-bordered table-striped table-hover table-condensed">
+      <thead>
+        <tr>
+          <th class="text-center">Game Field</th>	
+          <th class="text-center">Game Date</th>	
+          <th class="text-center">Game Time</th>	
+          <th class="text-center">Referee First Name</th>  
+          <th class="text-center">Referee Last Name</th>       
+        </tr>
+      </thead>
+      <tbody>
+          <tr v-for="asgn in assign2">
+            <td>{{ asgn.field }}</td> 
+            <td>{{ asgn.gdate }}</td> 
+            <td>{{ asgn.gtime }}</td>
+            <td>{{ asgn.firstname }}</td>
+            <td>{{ asgn.lastname }}</td>
+            
+            <td>
+              <button type="button" v-on:click="handleEditGame(asgn)" class="btn btn-outline-secondary btn-sm">Edit</button>
+                        <button type="button" class="btn btn-outline-secondary btn-sm" v-on:click="postDeleteGame(asgn)">Delete</button>
             </td>
           </tr>
 
@@ -61,22 +89,21 @@
     </header>
     
      <h4>Input fields to be entered as a row in the table</h4><br>
-     <form v-on:submit.prevent="postAssignment">
+     <form v-on:submit.prevent="postAssign">
       <label for="assignment_game">Choose a Game:&nbsp;&nbsp;&nbsp;</label>
-      <select v-model ="assignForm.game_id">
-        <option> Select</option>
-        <option v-for = "g in game" value = "g.id">{{g.id}},{{g.field}}, {{g.gtime}}</option>
+      <select required v-model ="assignForm.gameid">
+        
+        <option v-for = "g in game" :value = "g.id">{{g.id}},{{g.field}}, {{g.gtime}}</option>
       </select> 
       <br> 
       <label for="assignment_referee">Choose a referee:&nbsp;&nbsp;&nbsp;</label>
-      <select v-model ="assignForm.referee_id">
-        <option> Select</option>
-        <option v-for = "r in referee" value = "r.id">{{r.id}} - {{r.firstname}}- {{r.lastname}}</option>
+      <select required v-model ="assignForm.refereeid">
+        
+        <option v-for = "r in referee" :value = "r.id">{{r.id}} - {{r.firstname}}- {{r.lastname}}</option>
       </select>
       <br> 
       <label for="assignment_refereeStatus">Choose a referee:&nbsp;&nbsp;&nbsp;</label>
-      <select v-model ="assignForm.referee_status">
-        <option> Select</option>
+      <select required v-model ="assignForm.assign_status">
         <option> unassigned</option>
         <option> assigned</option>
         <option> tentative</option>
@@ -84,8 +111,10 @@
       </select> 
         <br><br><br>
         
-      <button type="submit" class="btn btn-primary">{{ selectedAssignment === null ? "Add " : "Edit " }} Assignment</button>
-      <button type="button" class="btn btn-warning" v-if="selectedAssign" v-on:click="handleResetEdit">Cancel Edit</button>                 
+      <button type="submit" class="btn btn-primary">{{ selectedAssign === null ? "Add " : "Edit " }} Assignment</button>
+      <button type="button" class="btn btn-outline-secondary btn-warning" 
+           v-if="selectedAssign"
+           v-on:click="handleResetEditAssign">Cancel Edit</button><br><br><br>    
    </form>
 <script src="js/assign.js"></script>
 </main>
