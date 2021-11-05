@@ -38,7 +38,9 @@
         <tr>
           <th class="text-center">Field</th>	
           <th class="text-center">Date</th>	
-          <th class="text-center">Time</th>         
+          <th class="text-center">Time</th> 
+          <th class="text-center">Type</th> 
+
         </tr>
       </thead>
       <tbody>
@@ -46,6 +48,7 @@
             <td>{{ gm.field }}</td> 
             <td>{{ gm.gdate }}</td> 
             <td>{{ gm.gtime }}</td> 
+            <td>{{ gm.gtype }}</td> 
             <td>
               <button type="button" v-on:click="handleEditGame(gm)" class="btn btn-outline-secondary btn-sm">Edit</button>
                         <button type="button" class="btn btn-outline-secondary btn-sm" v-on:click="postDeleteGame(gm)">Delete</button>

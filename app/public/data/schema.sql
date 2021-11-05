@@ -12,20 +12,23 @@ CREATE TABLE referee(id INT NOT NULL PRIMARY KEY auto_increment,
 
                     firstname VARCHAR(25) NOT NULL, lastname VARCHAR(25) NOT NULL, grade VARCHAR(25) NOT NULL, position VARCHAR(25),
 
-                     age INT, skill INT, rstatus VARCHAR(25));
+                     age INT, skill INT);
 
 
 CREATE TABLE game(id INT NOT NULL PRIMARY KEY auto_increment, 
 field varchar(100), 
 gdate date,
-gtime time(6));
+gtime time,
+gtype varchar(25));
+
 
 CREATE TABLE assign
 (id INT NOT NULL PRIMARY KEY auto_increment, 
 refereeid INT,
 gameid INT,
 foreign key (refereeid) references referee(id),
-foreign key (gameid) references game(id));
+foreign key (gameid) references game(id),
+assign_status varchar(25));
 
 
 
@@ -37,29 +40,29 @@ CREATE TABLE sportuser (id INT NOT NULL PRIMARY KEY auto_increment, assignor BOO
 -- if user is assignor then show skill and status else name,age, grade
 
 
-INSERT INTO  referee (firstname, lastname,grade,age,skill,rstatus) VALUES
+INSERT INTO  referee (firstname, lastname,grade,age,skill) VALUES
 
-     ('Kevin','Kim', 'National', 32,70,'Unassigned'),
+     ('Kevin','Kim', 'National', 32,70),
 
-     ('Herbert', 'Miles','Local', 40,80, 'Unassigned'),
+     ('Herbert', 'Miles','Local', 40,80),
 
-     ('Morris', 'Reed', 'International', 35,40, 'Unassigned'),
+     ('Morris', 'Reed', 'International', 35,40),
 
-     ('Paula', 'Edwards', 'National',45, 70, 'Unassigned'),
+     ('Paula', 'Edwards', 'National',45, 70),
 
-     ('Tom', 'Gregory', 'Local', 50, 100, 'Unassigned');
+     ('Tom', 'Gregory', 'Local', 50, 100);
 
 
 
-INSERT INTO game (field, gdate, gtime)VALUES
+INSERT INTO game (field, gdate, gtime, gtype)VALUES
 
-    ('field1', '1-28-2018', '13:30:00'),
+    ('field1', '2021/01/02', '13:30:00', 'low-recreation'),
 
-    ('field2', '1-28-2018', '13:30:00'),
+    ('field2', '2021/01/05', '16:30:00', 'high-recreation'),
 
-    ('field3', '1-28-2018', '13:30:00'),
+    ('field3', '2021/01/04', '15:30:00', 'low-recreation'),
 
-    ('field4' ,'1-28-2018', '13:30:00');
+    ('field4' ,'2021/01/03', '14:00:00', 'high-recreation');
 
 
 
