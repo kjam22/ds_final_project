@@ -113,7 +113,7 @@ const Asgn = {
             this.assign = json;
 
             // reset the form
-            this.handleResetEdit();
+            this.handleResetEditAssign();
             });
         },
     //delete book
