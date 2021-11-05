@@ -27,6 +27,7 @@
                 <li><a href = "referee.html">Referee Info</a></li>
                 <li><a href = "game.html">Game Info</a></li>
                 <li><a href = "assign.html">Assign</a></li>
+                <li><a href = "reports.html">Reports</a></li>
               </ul>
 
       </div>
@@ -50,8 +51,8 @@
             <td>{{ gm.gtime }}</td> 
             <td>{{ gm.gtype }}</td> 
             <td>
-              <button type="button" v-on:click="handleEditGame(gm)" class="btn btn-outline-secondary btn-sm">Edit</button>
-                        <button type="button" class="btn btn-outline-secondary btn-sm" v-on:click="postDeleteGame(gm)">Delete</button>
+              <button type="button" v-on:click="handleEditGame(gm)" class="btn btn-outline-secondary btn-primary btn-sm">Edit</button>
+                        <button type="button" class="btn btn-outline-secondary btn-sm btn-warning" v-on:click="postDeleteGame(gm)">Delete</button>
             </td>
           </tr>
 

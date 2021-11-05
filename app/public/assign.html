@@ -27,6 +27,7 @@
                 <li><a href = "referee.html">Referee Info</a></li>
                 <li><a href = "game.html">Game Info</a></li>
                 <li><a href = "assign.html">Assign</a></li>
+                <li><a href = "reports.html">Reports</a></li>
               </ul>
 
       </div>
@@ -47,8 +48,8 @@
             <td>{{ asgn.gameid }}</td> 
             <td>{{ asgn.assign_status }}</td>
             <td>
-              <button type="button" v-on:click="handleEditAssign(asgn)" class="btn btn-outline-secondary btn-sm">Edit</button>
-                        <button type="button" class="btn btn-outline-secondary btn-sm" v-on:click="postDeleteAssign(asgn)">Delete</button>
+              <button type="button" v-on:click="handleEditAssign(asgn)" class="btn btn-outline-secondary btn-primary btn-sm">Edit</button>
+                        <button type="button" class="btn btn-outline-secondary btn-warning btn-sm" v-on:click="postDeleteAssign(asgn)">Delete</button>
             </td>
           </tr>
 
@@ -74,8 +75,8 @@
             <td>{{ asgn.lastname }}</td>
             
             <td>
-              <button type="button" v-on:click="handleEditGame(asgn)" class="btn btn-outline-secondary btn-sm">Edit</button>
-                        <button type="button" class="btn btn-outline-secondary btn-sm" v-on:click="postDeleteGame(asgn)">Delete</button>
+              <button type="button" v-on:click="handleEditGame(asgn)" class="btn btn-outline-secondary btn-primary btn-sm">Edit</button>
+                        <button type="button" class="btn btn-outline-secondary btn-sm btn-warning" v-on:click="postDeleteGame(asgn)">Delete</button>
             </td>
           </tr>
 
