@@ -48,11 +48,12 @@ $stmt->execute([
     echo "Referee Status,Game Field,Game Date,Start Time, End Time\r\n";
   
     foreach($games as $g) {
-      echo "\"".$g['referee_status'] . "\","
-          .$g['game_field'] . ","
-          .$g['game_date'] . ","
-          .$g['start_time'] . ","
-          .$g['end_time']."\r\n";
+      echo $g['assign_status'] . ','
+          .$g['gfield'] . ','
+          .$g['gdate'] . ','
+          .$g['gtime'] . ','
+          .$g['lastname'] . ','
+          .$g['firstname']."\r\n";
     }
   
   } 

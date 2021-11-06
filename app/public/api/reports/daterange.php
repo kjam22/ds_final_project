@@ -41,13 +41,13 @@ $stmt->execute([
  $games = $stmt->fetchAll();
  if (isset($_GET['format']) && $_GET['format']=='csv') {
     header('Content-Type: text/csv');
-    echo "Game Field,Game Date,Start Time, End Time, Referee Name\r\n";
+    echo "Game Field,Game Date, Game Time, Referee Firstname, Referee Lastname\r\n";
   
     foreach($games as $g) {
-      echo "\"".$g['field']. "\","
-                .$g['gdate'] . ","
-                .$g['gtime'] . ","
-                .$g['firstname'] . ","
+      echo $g['field']. ','
+                .$g['gdate'] . ','
+                .$g['gtime'] . ','
+                .$g['firstname'] .','
                 .$g['lastname']."\r\n";
     }
   
