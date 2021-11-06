@@ -44,7 +44,7 @@ const reportsApp = {
               });
           },
           listGamesDateRange(evt){
-             fetch('api/report/listGamesDateRange.php', {
+             fetch('api/reports/daterange.php', {
                 method:'POST',
                 body: JSON.stringify(this.gameReportsForm),
                 headers: {
@@ -54,7 +54,6 @@ const reportsApp = {
               .then( response => response.json() )
               .then( json => {
                 console.log("Returned from post:", json);
-                // TODO: test a result was returned!
                 this.games = json;
                 
               
