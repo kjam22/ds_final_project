@@ -10,9 +10,9 @@
     <script src="https://unpkg.com/vue@next"></script>
   </head>
 
-<body>
-  <h1><img class="logo" src="img/fb3.png" alt="logo"/>&#160 Indiana Soccer Referees Association</h1>
-  <div id="reportjs" class = "container-fluid">
+<body id="reportjs">
+  <h1><img class="logo" src="../img/fb3.png" alt="logo"/>&#160 Indiana Soccer Referees Association</h1>
+  <div class = "container-fluid">
     <div class = "row">
       <nav class="mynav">
         <div class="navbar-header">
@@ -30,18 +30,48 @@
                 <li><a href = "reports.html">Reports</a></li>
               </ul>
 
-       </div>
+      </div>
     </nav>
-    </div>
    <main>
-    <h1>Reports</h1><br><br>
-    <button type="button" class="btn btn-block btn-outline-info btn-lg"><a href="unassignedfuturegames.html">List of all Future Games with unassigned as status of Referees</a></button>
-    <br><br>
-    <button  type="button" class="btn btn-block  btn-outline-info btn-lg"><a href="unassignedfuturegames.html">List of all Future Games with unassigned as status of Referees</a></button>
- </div>
+ 
+
+    <form v-on:submit.prevent="UnassignedFutureGames"> 
+        <input type="date" v-model="gamesForm.gdate">  
+        <button type="submit" class="btn btn-primary btn-sm">Search Games</button>       
+      </form>
+    <h1>List of all Future Games with unassigned as status of Referees</h1>
+    
+    <table class="table table-bordered table-striped table-hover table-condensed">
+      <thead>
+        <tr>
+            <th>Referee Status</th>
+            <th>Referee First Name</th>
+            <th>Referee Last Name</th>
+            <th>Game Field</th>
+            <th>Game Date</th>
+            <th>Game Time</th>
+                           
+
+          </tr>	
+      </thead>
+      <tbody>
+        <tr v-for="gm in games">
+            
+            <td>{{ gm.assign_status }}</td>     
+            <td>{{ gm.firstname }}</td> 
+            <td>{{ gm.lastname }}</td>                            
+            <td>{{ gm.field }}</td>
+            <td>{{ gm.gdate }}</td>
+            <td>{{ gm.gdate }}</td>
+                                 
+            
+        </tr>
+    </tbody>
+    </table>
+ 
+
 <script src="js/report.js"></script>
 </main>
-</body>
 
    <div class = "row">
 <footer> 
