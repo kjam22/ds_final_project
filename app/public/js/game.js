@@ -29,8 +29,8 @@ const Game = {
             })
         },
         postNewGame(evt) {
-            console.log("Posting:", this.gameForm);
-            // alert("Posting!");
+            console.log("Posting::::::::::::::", this.gameForm.gtype);
+            // alert(this.gameForm.gtype);
         
             fetch('api/game/create.php', {
                 method:'POST',

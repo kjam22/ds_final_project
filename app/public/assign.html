@@ -38,7 +38,11 @@
       <thead>
         <tr>
           <th class="text-center">RefereeID</th>	
+          <th class="text-center">Referee First Name</th>
+          <th class="text-center">Referee Last Name</th>
           <th class="text-center">GameID</th>	
+          <th class="text-center">Game Field</th>
+          <th class="text-center">Game Type</th>
           <th class="text-center">Assign Status</th>         
         </tr>
       </thead>
@@ -79,10 +83,7 @@
             <td>{{ asgn.gtime }}</td>
             <td>{{ asgn.firstname }}</td>
             <td>{{ asgn.lastname }}</td>
-            <td>
-              <button type="button" v-on:click="handleEditGame(asgn)" class="btn btn-outline-secondary btn-primary btn-sm">Edit</button>
-                        <button type="button" class="btn btn-outline-secondary btn-sm btn-warning" v-on:click="postDeleteGame(asgn)">Delete</button>
-            </td>
+
           </tr>
 
       </tbody>

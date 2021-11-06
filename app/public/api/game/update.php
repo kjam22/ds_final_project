@@ -28,15 +28,17 @@ $stmt = $db->prepare(
   'UPDATE game SET 
   field= ?,
   gdate = ?,
-  gtime= ?
+  gtime= ?,
+  gtype= ?
 WHERE id = ?'
 );
 // PHP $_POST is a PHP super global variable which is used to collect form data after submitting an HTML form with method="post". $_POST is also widely used to pass variables
 $stmt->execute([
   $_POST['field'],
   $_POST['gdate'],
-  $_POST['gtime']
-
+  $_POST['gtime'],
+  $_POST['gtype'],
+  $_POST['id']
 ]);
 
 // Get auto-generated PK from DB

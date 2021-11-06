@@ -74,7 +74,13 @@
     <input type="date"  placeholder="dd-mm-yyyy" v-model="gameForm.gdate" class="form-control" id="gdate"><br>
     <label for="gtime">Grade</label>
     <input type="time" v-model="gameForm.gtime" class="form-control" id="gtime" placeholder="Enter Time"><br>
-  </div>
+    <label for="gtype">Choose a Game Type:&nbsp;&nbsp;&nbsp;</label><br>
+    <select required v-model ="gameForm.gtype">
+      <option>low-recreation</option>
+      <option>high-recreation</option>
+
+    </select> 
+    </div>
   <button type="submit" class="btn btn-primary">{{ selectedGame === null ? "Add " : "Edit " }} Game</button>
   <button type="button" class="btn btn-warning" 
      v-if="selectedGame"

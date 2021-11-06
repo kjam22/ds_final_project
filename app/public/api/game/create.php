@@ -31,15 +31,17 @@ $db = DbConnection::getConnection();
 // Step 2: Create & run the query
 // Note the use of parameterized statements to avoid injection
 $stmt = $db->prepare(
-  'INSERT INTO game (field, gdate, gtime)
-  VALUES (?, ?, ?)'
+  'INSERT INTO game (field, gdate, gtime,gtype)
+  VALUES (?, ?, ?, ?)'
 );
 
 $stmt->execute([
   
   $_POST['field'],
   $_POST['gdate'],
-  $_POST['gtime']
+  $_POST['gtime'],
+  $_POST['gtype']
+
 ]);
 if (!$stmt -> commit()) {
   echo "Commit transaction failed";
