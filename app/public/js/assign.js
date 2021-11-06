@@ -22,6 +22,8 @@ const Asgn = {
             .then( (responseJson) => {
                 console.log(responseJson);
                 this.assign = responseJson;
+                this.fetchAssignData2();
+                // window.location.reload(true);
                 console.log(this.assign);
             })
             .catch( (err) => {
@@ -37,6 +39,8 @@ const Asgn = {
                 this.assign2 = responseJson;
                 console.log(this.assign2);
             })
+
+
             .catch( (err) => {
                 console.log(this.assign2);
                 console.error(err);

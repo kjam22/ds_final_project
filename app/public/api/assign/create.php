@@ -41,11 +41,7 @@ $stmt->execute([
   $_POST['gameid'],
   $_POST['assign_status']
 ]);
-if (!$stmt -> commit()) {
-  echo "Commit transaction failed";
-  exit();
-}
-
+$stmt -> commit();
 // Get auto-generated PK from DB
 // https://www.php.net/manual/en/pdo.lastinsertid.php
 // $pk = $db->lastInsertId();  

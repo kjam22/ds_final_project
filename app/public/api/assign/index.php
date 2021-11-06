@@ -6,6 +6,10 @@ $db = DbConnection::getConnection();
 
 // Step 2: Create & run the query
 $sql='SELECT * FROM assign';
+
+$sql = 'SELECT  a.id,  a.gameid, r.firstname, r.lastname, a.refereeid,  a.assign_status, g.field, g.gtype
+FROM assign a, referee r, game g
+WHERE  a.refereeid = r.id  and a.gameid=g.id';
 $vars = [];
 
 

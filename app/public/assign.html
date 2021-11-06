@@ -45,8 +45,14 @@
       <tbody>
           <tr v-for="asgn in assign">
             <td>{{ asgn.refereeid }}</td> 
+            <td>{{ asgn.firstname }}</td>
+            <td>{{ asgn.lastname }}</td>
             <td>{{ asgn.gameid }}</td> 
+            <td>{{ asgn.field }}</td>
+            <td>{{ asgn.gtype }}</td>
             <td>{{ asgn.assign_status }}</td>
+
+
             <td>
               <button type="button" v-on:click="handleEditAssign(asgn)" class="btn btn-outline-secondary btn-primary btn-sm">Edit</button>
                         <button type="button" class="btn btn-outline-secondary btn-warning btn-sm" v-on:click="postDeleteAssign(asgn)">Delete</button>
@@ -73,7 +79,6 @@
             <td>{{ asgn.gtime }}</td>
             <td>{{ asgn.firstname }}</td>
             <td>{{ asgn.lastname }}</td>
-            
             <td>
               <button type="button" v-on:click="handleEditGame(asgn)" class="btn btn-outline-secondary btn-primary btn-sm">Edit</button>
                         <button type="button" class="btn btn-outline-secondary btn-sm btn-warning" v-on:click="postDeleteGame(asgn)">Delete</button>
