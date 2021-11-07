@@ -68,11 +68,11 @@
      <h4>Input fields to be entered as a row in the table</h4><br>
   <form v-on:submit.prevent="postGame">
     <div class="form-group">
-    <label for="field">Field</label>
+    <label for="field">Game Field</label>
     <input type="text" v-model="gameForm.field" class="form-control" id="field" placeholder="Enter Field Name"><br>
-    <label for="gdate">Date</label>
+    <label for="gdate">Game Date</label>
     <input type="date"  placeholder="dd-mm-yyyy" v-model="gameForm.gdate" class="form-control" id="gdate"><br>
-    <label for="gtime">Grade</label>
+    <label for="gtime">Game Time</label>
     <input type="time" v-model="gameForm.gtime" class="form-control" id="gtime" placeholder="Enter Time"><br>
     <label for="gtype">Choose a Game Type:&nbsp;&nbsp;&nbsp;</label><br>
     <select required v-model ="gameForm.gtype">

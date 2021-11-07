@@ -37,21 +37,21 @@
  
     <h1>Referees by date range</h1>
     <form v-on:submit.prevent="listGamesDateRange">
-        <label for="referees">Choose a referee firstname: </label>
+        <label for="referees">Choose a referee firstname: </label><br>
         <select v-model ="gameReportsForm.firstname">
           <option> Select</option>
           <option v-for = "r in referees" >{{r.firstname}}</option>
         </select>    
-        <label for="referees">Choose a referee lastname: </label>
+        <br><label for="referees">Choose a referee lastname: </label><br>
         <select v-model ="gameReportsForm.lastname">
           <option> Select</option>
           <option v-for = "r in referees" >{{r.lastname}}</option>
         </select>    
-        <label for="startDate">Start Date: </label>
+        <br><label for="startDate">Start Date: </label><br>
           <input type="date"  v-model ="gameReportsForm.start_date">
-        <label for="endDate">End Date: </label>
-         <input type="date"  v-model = "gameReportsForm.end_date">   
-        <button type="submit" class="btn btn-primary btn-sm">Search Games</button>                   
+        <br><label for="endDate">End Date: </label><br>
+         <input type="date"  v-model = "gameReportsForm.end_date">
+        <br><br><button type="submit" class="btn btn-primary btn-sm">Search Games</button>                   
   </form>
   
   
@@ -59,13 +59,19 @@
     <thead>
       <tr>
         <th>Game Field</th>
+        <th>Referee Firstname</th>
+        <th>Referee Lastname</th>
         <th>Game Date</th>
+        <th>Game Time</th>
       </tr>
     </thead>
       <tbody>
           <tr v-for="gm in games">
               <td>{{ gm.field }}</td>
+              <td>{{ gm.firstname }}</td>
+              <td>{{ gm.lastname }}</td>
               <td>{{ gm.gdate }}</td>
+              <td>{{ gm.gtime }}</td>
               <td></td>      
           </tr>
       </tbody>

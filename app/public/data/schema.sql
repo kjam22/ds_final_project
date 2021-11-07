@@ -40,7 +40,7 @@ CREATE TABLE sportuser (id INT NOT NULL PRIMARY KEY auto_increment, assignor BOO
 -- if user is assignor then show skill and status else name,age, grade
 
 
-INSERT INTO  referee (firstname, lastname,grade,age,skill) VALUES
+INSERT INTO  referee (firstname, lastname, grade,age, skill) VALUES
 
      ('Kevin','Kim', 'National', 32,70),
 
@@ -56,24 +56,13 @@ INSERT INTO  referee (firstname, lastname,grade,age,skill) VALUES
 
 INSERT INTO game (field, gdate, gtime, gtype)VALUES
 
-    ('field1', '2021/01/02', '13:30:00', 'low-recreation'),
+    ('IU Stadium', '2021/01/02', '13:30:00', 'low-recreation'),
 
-    ('field2', '2021/01/05', '16:30:00', 'high-recreation'),
+    ('Bloomington Stadium', '2021/01/05', '16:30:00', 'high-recreation'),
 
-    ('field3', '2021/01/04', '15:30:00', 'low-recreation'),
+    ('Indy Stadium', '2021/01/04', '15:30:00', 'low-recreation'),
 
-    ('field4' ,'2021/01/03', '14:00:00', 'high-recreation');
-
-
-
--- INSERT INTO Report VALUES
-
---      (1, 101, '2021-11-01', 'Kevin Kim'),
-
---      (2, 102, '2021-11-10', 'Herbert Miles'),
-
---      (3, 103, '2021-11-13', 'Morris Read'),
-
---      (4, 104, '2021-12-11', 'Tom Gregory');     
+    ('Purdue Stadium' ,'2021/01/03', '14:00:00', 'high-recreation');
+   
 
 select * from assign;

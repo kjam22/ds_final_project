@@ -30,8 +30,7 @@ $stmt = $db->prepare(
   lastname = ?,
   grade = ?,
   age = ?,
-  skill = ?,
-  rstatus= ?
+  skill = ?
 WHERE id = ?'
 );
 
@@ -41,7 +40,6 @@ $stmt->execute([
   $_POST['grade'],
   $_POST['age'],
   $_POST['skill'],
-  $_POST['rstatus'],
   $_POST['id']
 
 ]);

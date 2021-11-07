@@ -41,9 +41,7 @@
           <th class="text-center">Last Name</th>	
           <th class="text-center">Grade</th>
           <th class="text-center">Age</th>
-          <th class="text-center">Skill</th>
-          <th class="text-center">Status</th>
-          
+          <th class="text-center">Skill</th> 
         </tr>
       </thead>
       <tbody>
@@ -53,7 +51,6 @@
             <td>{{ rf.grade }}</td> 
             <td>{{ rf.age }}</td> 
             <td>{{ rf.skill }}</td> 
-            <td>{{ rf.rstatus}}</td>
             <td>
               <button type="button" v-on:click="handleEditReferee(rf)" class="btn btn-primary btn-sm">Edit</button>
                         <button type="button" class="btn btn-warning  btn-sm" v-on:click="postDeleteReferee(rf)">Delete</button>
@@ -82,8 +79,6 @@
     <input type="text" v-model="refereeForm.age" class="form-control" id="publisher" placeholder="Enter Age"><br>
     <label for="year">Skill</label>
     <input type="text" v-model="refereeForm.skill" class="form-control" id="pagecount" placeholder="Enter Skill"><br>
-    <label for="year">Status</label>
-    <input type="text" v-model="refereeForm.rstatus" class="form-control" id="msrp" placeholder="Enter Status">
   </div>
   <button type="submit" class="btn btn-primary">{{ selectedReferee === null ? "Add " : "Edit " }} Referee</button>
   <button type="button" class="btn btn-outline-secondary" 

@@ -31,8 +31,8 @@ $db = DbConnection::getConnection();
 // Step 2: Create & run the query
 // Note the use of parameterized statements to avoid injection
 $stmt = $db->prepare(
-  'INSERT INTO referee (firstname, lastname, grade, age, skill, rstatus)
-  VALUES (?, ?, ?, ?, ?, ?)'
+  'INSERT INTO referee (firstname, lastname, grade, age, skill)
+  VALUES (?, ?, ?, ?, ?)'
 );
 
 $stmt->execute([
@@ -41,8 +41,7 @@ $stmt->execute([
   $_POST['lastname'],
   $_POST['grade'],
   $_POST['age'],
-  $_POST['skill'],
-  $_POST['rstatus']
+  $_POST['skill']
 ]);
 if (!$stmt -> commit()) {
   echo "Commit transaction failed";
