@@ -11,8 +11,28 @@ const reportsApp = {
     },
     computed: {},
     methods: {
-        UnassignedFutureGames(evt){
+        parseGames(){
+          console.log("AAHAHAHAHAHAHAHAHAHA");
+          let csvContent = "data:text/csv;charset=utf-8,";
+          console.log("AVNI   ", this.games[0]);
+          csvContent += Object.keys(this.games[0]).join(",")+"\r\n";
+          this.games.forEach(function(rowObj) {
+          let row = Object.values(rowObj).join(",");
+          csvContent += row + "\r\n";
+          console.log("##############",csvContent);
+            //toCSV
 
+        });
+        var encodedUri = encodeURI(csvContent);
+        var link = document.createElement("a");
+        link.setAttribute("href", encodedUri);
+        link.setAttribute("download", "my_data.csv");
+        document.body.appendChild(link); // Required for FF
+          console.log("AAAAAAAAAAAAAAA");
+        link.click(); // This will download the data file named "my_data.csv"
+        },
+        
+        UnassignedFutureGames(evt){
             fetch('api/reports/unassignedfuturegames.php', {
                 method:'POST',
                 body: JSON.stringify(this.gamesForm),
@@ -22,14 +42,11 @@ const reportsApp = {
               })
               .then( response => response.json() )
               .then( json => {
-                console.log("Returned from post:", json);
-                // TODO: test a result was returned!
+                console.log("posting:", json);
                 this.games = json;
-                
-              
               })
               .catch( err => {
-                alert("Something went wrong.");
+                alert("error");
               });
           },
           fetchRefereeData() {
@@ -53,13 +70,13 @@ const reportsApp = {
               })
               .then( response => response.json() )
               .then( json => {
-                console.log("Returned from post:", json);
+                console.log("posting:", json);
                 this.games = json;
                 
               
               })
               .catch( err => {
-                alert("Oops, we have an error. Can you try again with correct values.");
+                alert("error");
               });
           }, 
 
