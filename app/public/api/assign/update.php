@@ -34,7 +34,7 @@ $stmt = $db->prepare(
   'UPDATE  assign set 
   gameid = ?, 
   refereeid = ?,
-  assign_status = ?
+  assign_status = ?,
   where id = ?'
 );
 

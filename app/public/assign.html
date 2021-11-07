@@ -103,18 +103,24 @@
         <option v-for = "g in game" :value = "g.id">{{g.id}},{{g.field}}, {{g.gtime}}</option>
       </select> 
       <br> 
-      <label for="assignment_referee">Choose a referee:&nbsp;&nbsp;&nbsp;</label>
+      <label for="assignment_referee">Choose a Referee:&nbsp;&nbsp;&nbsp;</label>
       <select required v-model ="assignForm.refereeid">
         
         <option v-for = "r in referee" :value = "r.id">{{r.id}} - {{r.firstname}}- {{r.lastname}}</option>
       </select>
       <br> 
-      <label for="assignment_refereeStatus">Choose a referee:&nbsp;&nbsp;&nbsp;</label>
+      <label for="assignment_refereeStatus">Choose a Status:&nbsp;&nbsp;&nbsp;</label>
       <select required v-model ="assignForm.assign_status">
         <option> unassigned</option>
         <option> assigned</option>
         <option> tentative</option>
         <option> accepted</option>
+      </select> 
+      <br> 
+      <label for="assignment_gtype">Choose a Game Type:&nbsp;&nbsp;&nbsp;</label>
+      <select required v-model ="assignForm.gtype">
+        <option> low-recreation</option>
+        <option> high-recreation</option>
       </select> 
         <br><br><br>
         

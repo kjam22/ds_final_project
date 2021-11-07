@@ -10,9 +10,9 @@
     <script src="https://unpkg.com/vue@next"></script>
   </head>
 
-<body>
-  <h1><img class="logo" src="img/fb3.png" alt="logo"/>&#160 Indiana Soccer Referees Association</h1>
-  <div id="reportjs" class = "container-fluid">
+<body id="reportjs">
+  <h1><img class="logo" src="../img/fb3.png" alt="logo"/>&#160 Indiana Soccer Referees Association</h1>
+  <div class = "container-fluid">
     <div class = "row">
       <nav class="mynav">
         <div class="navbar-header">
@@ -30,20 +30,47 @@
                 <li><a href = "reports.html">Reports</a></li>
               </ul>
 
-       </div>
+      </div>
+      </div>
     </nav>
-    </div>
    <main>
-    <h1>Reports</h1><br><br>
-    <button type="button" class="btn btn-block btn-outline-info btn-lg"><a href="unassignedfuturegames.html">List of all Future Games with unassigned as status of Referees</a></button>
-    <br><br>
-    <button  type="button" class="btn btn-block  btn-outline-info btn-lg"><a href="daterange.html">Referees by date range</a></button>
-    <br><br>
-    <button  type="button" class="btn btn-block  btn-outline-info btn-lg"><a href="assigned.html">Referees who have status as assigned</a></button>
- </div>
+ 
+    <h1>Referees who have status as assigned</h1>
+
+  
+  <form v-on:submit.prevent="listAssigned">
+    <br><button type="submit" class="btn btn-primary btn-sm">Search Assigned Games and Referees</button><br> 
+    <br>
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Game Field</th>
+        <th>Referee Firstname</th>
+        <th>Referee Lastname</th>
+        <th>Game Date</th>
+        <th>Game Time</th>
+      </tr>
+    </thead>
+      <tbody>
+          <tr v-for="gm in games">
+              <td>{{ gm.field }}</td>
+              <td>{{ gm.firstname }}</td>
+              <td>{{ gm.lastname }}</td>
+              <td>{{ gm.gdate }}</td>
+              <td>{{ gm.gtime }}</td>
+              <td></td>      
+          </tr>
+      </tbody>
+  </table>
+  <button type="button" v-on:click="parseGames"> Download as CSV</button>
+</form>
+  
+</div>
+
+
+
 <script src="js/report.js"></script>
 </main>
-</body>
 
    <div class = "row">
 <footer> 

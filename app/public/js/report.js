@@ -79,10 +79,41 @@ const reportsApp = {
                 alert("error");
               });
           }, 
-
+          
+          listAssigned(evt){
+            fetch('api/assign/index2.php', {
+                method:'POST',
+                body: JSON.stringify(this.gamesForm),
+                headers: {
+                  "Content-Type": "application/json; charset=utf-8"
+                }
+              })
+              .then( response => response.json() )
+              .then( json => {
+                console.log("posting:", json);
+                this.games = json;
+              })
+              .catch( err => {
+                alert("error");
+              });
+          },
+          fetchGameData(){
+            fetch('/api/game/')
+            .then( response => response.json() )
+            .then( (responseJson) => {
+                console.log(responseJson);
+                this.game = responseJson;
+                console.log(this.game);
+            })
+            .catch( (err) => {
+                console.log(this.game);
+                console.error(err);
+            })
+        },
     },
     created() {
         this.fetchRefereeData(); 
+        this.fetchGameData();
     }
    
   
