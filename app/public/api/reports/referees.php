@@ -24,7 +24,8 @@ $stmt = $db->prepare ( 'SELECT a.assign_status,
                     g.gtime, 
                     r.firstname,
                     r.lastname,
-                    a.assign_position
+                    a.assign_position,
+                    g.gtype
                     FROM game g, referee r, assign a 
                     WHERE  
                     r.id = a.refereeid AND 
