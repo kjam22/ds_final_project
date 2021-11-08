@@ -5,7 +5,7 @@ require 'class/DbConnection.php';
 $db = DbConnection::getConnection();
 
 // Step 2: Create & run the query
-$sql = '   SELECT  g.field, g.gdate, g.gtime, r.firstname, r.lastname, a.assign_status
+$sql = '   SELECT  g.field, g.gdate, g.gtime, r.firstname, r.lastname, a.assign_status, a.assign_position
 FROM assign a, game g, referee r
 WHERE  a.refereeid = r.id and a.gameid = g.id and a.assign_status="assigned" ';
 

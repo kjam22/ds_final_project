@@ -42,8 +42,11 @@
           <th class="text-center">Referee Last Name</th>
           <th class="text-center">GameID</th>	
           <th class="text-center">Game Field</th>
+          <th class="text-center">Game Date</th>
+          <th class="text-center">Game Time</th>
           <th class="text-center">Game Type</th>
-          <th class="text-center">Assign Status</th>         
+          <th class="text-center">Assign Status</th> 
+          <th class="text-center">Referee Position</th>        
         </tr>
       </thead>
       <tbody>
@@ -53,10 +56,11 @@
             <td>{{ asgn.lastname }}</td>
             <td>{{ asgn.gameid }}</td> 
             <td>{{ asgn.field }}</td>
+            <td>{{ asgn.gdate }}</td>
+            <td>{{ asgn.gtime }}</td>
             <td>{{ asgn.gtype }}</td>
             <td>{{ asgn.assign_status }}</td>
-
-
+            <td>{{ asgn.assign_position }}</td>
             <td>
               <button type="button" v-on:click="handleEditAssign(asgn)" class="btn btn-outline-secondary btn-primary btn-sm">Edit</button>
                         <button type="button" class="btn btn-outline-secondary btn-warning btn-sm" v-on:click="postDeleteAssign(asgn)">Delete</button>
@@ -73,7 +77,8 @@
           <th class="text-center">Game Date</th>	
           <th class="text-center">Game Time</th>	
           <th class="text-center">Referee First Name</th>  
-          <th class="text-center">Referee Last Name</th>       
+          <th class="text-center">Referee Last Name</th>  
+          <th class="text-center">Referee Position</th>    
         </tr>
       </thead>
       <tbody>
@@ -83,7 +88,7 @@
             <td>{{ asgn.gtime }}</td>
             <td>{{ asgn.firstname }}</td>
             <td>{{ asgn.lastname }}</td>
-
+            <td>{{ asgn.assign_position }}</td>
           </tr>
 
       </tbody>
@@ -111,16 +116,18 @@
       <br> 
       <label for="assignment_refereeStatus">Choose a Status:&nbsp;&nbsp;&nbsp;</label>
       <select required v-model ="assignForm.assign_status">
-        <option> unassigned</option>
-        <option> assigned</option>
-        <option> tentative</option>
-        <option> accepted</option>
+        <option>Unassigned</option>
+        <option>Assigned</option>
+        <option>Tentative</option>
+        <option>Accepted</option>
       </select> 
       <br> 
-      <label for="assignment_gtype">Choose a Game Type:&nbsp;&nbsp;&nbsp;</label>
-      <select required v-model ="assignForm.gtype">
-        <option> low-recreation</option>
-        <option> high-recreation</option>
+      <label for="assignment_gpos">Choose a Referee Position:&nbsp;&nbsp;&nbsp;</label>
+      <select required v-model ="assignForm.assign_position">
+        <option>Head Referee</option>
+        <option>Two Linesmen</option>
+        <option>Fourth Official</option>
+        <option>Video Match Officials</option>
       </select> 
         <br><br><br>
         

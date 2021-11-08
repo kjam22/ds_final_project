@@ -2,11 +2,11 @@ const reportsApp = {
     data() {
       return {
         games: [],
+        game:[],
         referees : [],
         gamesForm: {},
         gameReportsForm : {},
-            
-      
+        refereeFilter : [],
       }
     },
     computed: {},
@@ -44,6 +44,24 @@ const reportsApp = {
               .then( json => {
                 console.log("posting:", json);
                 this.games = json;
+              })
+              .catch( err => {
+                alert("error");
+              });
+          },
+          CheckReferee(evt){
+            console.log(this.gamesForm)
+            fetch('api/reports/referees.php', {
+                method:'POST',
+                body: JSON.stringify(this.gamesForm),
+                headers: {
+                  "Content-Type": "application/json; charset=utf-8"
+                }
+              })
+              .then( response => response.json() )
+              .then( json => {
+                console.log("posting:", json);
+                this.refereeFilter = json;
               })
               .catch( err => {
                 alert("error");

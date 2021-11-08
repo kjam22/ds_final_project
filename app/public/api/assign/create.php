@@ -34,15 +34,16 @@ $db = DbConnection::getConnection();
 
 
 $stmt = $db->prepare(
-  'INSERT INTO assign (refereeid, gameid, assign_status)
-  VALUES (?, ?, ?)'
+  'INSERT INTO assign (refereeid, gameid, assign_status, assign_position)
+  VALUES (?, ?, ?, ?)'
 );
 
 $stmt->execute([
   
   $_POST['refereeid'],
   $_POST['gameid'],
-  $_POST['assign_status']
+  $_POST['assign_status'],
+  $_POST['assign_position']
 ]);
 $stmt -> commit();
 // Get auto-generated PK from DB

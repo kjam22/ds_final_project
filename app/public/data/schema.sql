@@ -28,7 +28,8 @@ refereeid INT,
 gameid INT,
 foreign key (refereeid) references referee(id),
 foreign key (gameid) references game(id),
-assign_status varchar(25));
+assign_status varchar(25)
+assign_position varchar(25));
 
 
 

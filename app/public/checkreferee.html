@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <title>ISRA</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://code.jquery.com/jquery-3.2.1.js"></script> <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <link href="css/style.css" rel="stylesheet" type="text/css" />
+    <script src="https://unpkg.com/vue@next"></script>
+  </head>
+
+<body id="reportjs">
+  <h1><img class="logo" src="../img/fb3.png" alt="logo"/>&#160 Indiana Soccer Referees Association</h1>
+  <div class = "container-fluid">
+    <div class = "row">
+      <nav class="mynav">
+        <div class="navbar-header">
+          <button class="navbar-toggle" data-toggle="collapse" data-target="#MyMenu">
+          Menu
+          </button>
+        </div>
+       
+        <div class="collapse navbar-collapse" id="MyMenu">
+            <ul class="nav navbar-nav">
+                <li><a href = "index.html">Home</a></li>
+                <li><a href = "referee.html">Referee Info</a></li>
+                <li><a href = "game.html">Game Info</a></li>
+                <li><a href = "assign.html">Assign</a></li>
+                <li><a href = "reports.html">Reports</a></li>
+              </ul>
+
+      </div>
+    </nav>
+   <main>
+ 
+
+    <form v-on:submit.prevent="CheckReferee"> 
+        <label for="gameid">Game Field</label><br>
+        <select required v-model ="gamesForm.gameid">
+            <option v-for = "g in game" :value = "g.id">{{g.field}}</option>
+          </select> <br><br>
+
+        <label for="gdate">Game Date</label><br>
+        <input type="date" v-model="gamesForm.gdate" class="form-control" id="gdate" placeholder="Enter Date"> <br>
+        
+        <label for="gtime">Game Time</label><br>
+        <input type="time" v-model="gamesForm.gtime" class="form-control" id="gtime" placeholder="Enter Time"><br>
+
+
+        <button type="submit" class="btn btn-primary btn-sm">Search Games</button>       
+      </form>
+    <h1>List of all Referees according to the games</h1>
+    
+    <table class="table table-bordered table-striped table-hover table-condensed">
+      <thead>
+        <tr>
+            <th>Referee Status</th>
+            <th>Referee First Name</th>
+            <th>Referee Last Name</th>
+            <th>Referee Assign Position</th>
+            <th>Game Field</th>
+            <th>Game Date</th>
+            <th>Game Time</th>
+                           
+
+          </tr>	
+      </thead>
+      <tbody>
+        <tr v-for="gm in refereeFilter">
+            
+            <td>{{ gm.assign_status }}</td>     
+            <td>{{ gm.firstname }}</td> 
+            <td>{{ gm.lastname }}</td>
+            <td>{{ gm.assign_position }}</td>                             
+            <td>{{ gm.field }}</td>
+            <td>{{ gm.gdate }}</td>
+            <td>{{ gm.gdate }}</td>
+                                 
+            
+        </tr>
+    </tbody>
+    </table>
+    <button type="button" v-on:click="parseGames">Download as CSV</button>
+
+    <script src="js/report.js"></script>
+</main>
+
+   <div class = "row">
+<footer> 
+Indiana Soccer Referee Association | Phone: (325)-325-3488 | 10th Street, Bloomington</footer>
+    </div>
+    </div>
+  </body>
+</html>

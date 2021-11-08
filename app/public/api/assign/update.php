@@ -35,6 +35,7 @@ $stmt = $db->prepare(
   gameid = ?, 
   refereeid = ?,
   assign_status = ?,
+  assign_position = ?
   where id = ?'
 );
 
@@ -43,6 +44,7 @@ $stmt->execute([
   $_POST['gameid'],
   $_POST['refereeid'],
   $_POST['assign_status'],
+  $_POST['assign_position'],
   $_POST['id']
 ]);
 
