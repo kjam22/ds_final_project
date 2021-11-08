@@ -2,6 +2,8 @@
 
 Team 7(KJAM):
 
+Website Link: http://ec2-18-118-194-95.us-east-2.compute.amazonaws.com/index.html
+
 Katie-Jane Price
 
 Avni Sharma
