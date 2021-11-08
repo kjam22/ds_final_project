@@ -35,18 +35,12 @@
     </nav>
    <main>
  
-    <h1>Referees by date range</h1>
+    <h1>Referees assigned by date range</h1>
     <form v-on:submit.prevent="listGamesDateRange">
-        <label for="referees">Choose a referee firstname: </label><br>
-        <select v-model ="gameReportsForm.firstname">
-          <option> Select</option>
-          <option v-for = "r in referees" >{{r.firstname}}</option>
-        </select>    
-        <br><label for="referees">Choose a referee lastname: </label><br>
-        <select v-model ="gameReportsForm.lastname">
-          <option> Select</option>
-          <option v-for = "r in referees" >{{r.lastname}}</option>
-        </select>    
+        <label for="referees">Choose a referee: </label><br>
+        <select v-model ="gameReportsForm.refereeid">
+            <option v-for = "r in referees" :value = "r.id">{{r.firstname}} - {{r.lastname}}</option>
+        </select>   
         <br><label for="startDate">Start Date: </label><br>
           <input type="date"  v-model ="gameReportsForm.start_date">
         <br><label for="endDate">End Date: </label><br>

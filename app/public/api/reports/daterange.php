@@ -23,18 +23,17 @@ $stmt = $db->prepare(
         g.gdate, 
         g.gtime,
         r.firstname,
-        r.lastname
+        r.lastname,
+        r.id
         FROM game g, referee r, assign a 
         WHERE r.id = a.refereeid AND 
               g.id = a.gameid AND 
-              g.gdate > ? and g.gdate < ?  and r.firstname = ? and r.lastname = ? and a.assign_status= "assigned" ');
+              g.gdate > ? and g.gdate < ?  and r.id = ? and a.assign_status= "assigned" ');
 
 $stmt->execute([
   $_POST['start_date'],
   $_POST['end_date'],
-  $_POST['firstname'],
-  $_POST['lastname'],
-
+  $_POST['refereeid'],
  ]);
 
 
