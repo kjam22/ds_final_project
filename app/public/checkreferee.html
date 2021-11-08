@@ -42,10 +42,10 @@
           </select> <br><br>
 
         <label for="gdate">Game Date</label><br>
-        <input type="date" v-model="gamesForm.gdate" class="form-control" id="gdate" placeholder="Enter Date"> <br>
+        <input type="date" v-model="gamesForm.gdate" class="form-control" id="gdate" placeholder="Enter Date" required> <br>
         
         <label for="gtime">Game Time</label><br>
-        <input type="time" v-model="gamesForm.gtime" class="form-control" id="gtime" placeholder="Enter Time"><br>
+        <input type="time" v-model="gamesForm.gtime" class="form-control" id="gtime" placeholder="Enter Time" required><br>
 
 
         <button type="submit" class="btn btn-primary btn-sm">Search Games</button>       

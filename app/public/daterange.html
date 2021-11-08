@@ -38,13 +38,13 @@
     <h1>Referees assigned by date range</h1>
     <form v-on:submit.prevent="listGamesDateRange">
         <label for="referees">Choose a referee: </label><br>
-        <select v-model ="gameReportsForm.refereeid">
+        <select v-model ="gameReportsForm.refereeid" required>
             <option v-for = "r in referees" :value = "r.id">{{r.firstname}} - {{r.lastname}}</option>
         </select>   
         <br><label for="startDate">Start Date: </label><br>
-          <input type="date"  v-model ="gameReportsForm.start_date">
+          <input type="date"  v-model ="gameReportsForm.start_date" required>
         <br><label for="endDate">End Date: </label><br>
-         <input type="date"  v-model = "gameReportsForm.end_date">
+         <input type="date"  v-model = "gameReportsForm.end_date" required>
         <br><br><button type="submit" class="btn btn-primary btn-sm">Search Games</button>                   
   </form>
   

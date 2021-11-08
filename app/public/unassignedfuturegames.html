@@ -36,7 +36,7 @@
  
 
     <form v-on:submit.prevent="UnassignedFutureGames"> 
-        <input type="date" v-model="gamesForm.gdate">  
+        <input type="date" v-model="gamesForm.gdate" required>  
         <button type="submit" class="btn btn-primary btn-sm">Search Games</button>       
       </form>
     <h1>Unassigned Future Games</h1>

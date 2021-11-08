@@ -70,15 +70,15 @@
   <form v-on:submit.prevent="postReferee">
     <div class="form-group">
     <label for="title">Fisrt Name</label>
-    <input type="text" v-model="refereeForm.firstname" class="form-control" id="title" placeholder="Enter First Name"><br>
+    <input type="text" v-model="refereeForm.firstname" class="form-control" id="title" placeholder="Enter First Name" required><br>
     <label for="author">Last Name</label>
-    <input type="text" v-model="refereeForm.lastname" class="form-control" id="author" placeholder="Enter Last Name"><br>
+    <input type="text" v-model="refereeForm.lastname" class="form-control" id="author" placeholder="Enter Last Name" required><br>
     <label for="year">Grade</label>
-    <input type="text" v-model="refereeForm.grade" class="form-control" id="year" placeholder="Enter Grade"><br>
+    <input type="text" v-model="refereeForm.grade" class="form-control" id="year" placeholder="Enter Grade" required><br>
     <label for="year">Age</label>
-    <input type="text" v-model="refereeForm.age" class="form-control" id="publisher" placeholder="Enter Age"><br>
+    <input type="text" v-model="refereeForm.age" class="form-control" id="publisher" placeholder="Enter Age" required><br>
     <label for="year">Skill</label>
-    <input type="text" v-model="refereeForm.skill" class="form-control" id="pagecount" placeholder="Enter Skill"><br>
+    <input type="text" v-model="refereeForm.skill" class="form-control" id="pagecount" placeholder="Enter Skill" required><br>
   </div>
   <button type="submit" class="btn btn-primary">{{ selectedReferee === null ? "Add " : "Edit " }} Referee</button>
   <button type="button" class="btn btn-outline-secondary" 

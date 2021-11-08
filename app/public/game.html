@@ -69,13 +69,13 @@
   <form v-on:submit.prevent="postGame">
     <div class="form-group">
     <label for="field">Game Field</label>
-    <input type="text" v-model="gameForm.field" class="form-control" id="field" placeholder="Enter Field Name"><br>
+    <input type="text" v-model="gameForm.field" class="form-control" id="field" placeholder="Enter Field Name" required><br>
     <label for="gdate">Game Date</label>
-    <input type="date"  placeholder="dd-mm-yyyy" v-model="gameForm.gdate" class="form-control" id="gdate"><br>
+    <input type="date"  placeholder="dd-mm-yyyy" v-model="gameForm.gdate" class="form-control" id="gdate" required><br>
     <label for="gtime">Game Time</label>
-    <input type="time" v-model="gameForm.gtime" class="form-control" id="gtime" placeholder="Enter Time"><br>
+    <input type="time" v-model="gameForm.gtime" class="form-control" id="gtime" placeholder="Enter Time" required><br>
     <label for="gtype">Choose a Game Type:&nbsp;&nbsp;&nbsp;</label><br>
-    <select required v-model ="gameForm.gtype">
+    <select required v-model ="gameForm.gtype" required>
       <option>low-recreation</option>
       <option>high-recreation</option>
 
