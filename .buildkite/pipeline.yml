@@ -1,0 +1,29 @@
+steps:
+  - label: ":eslint: JS Lint"
+    key: "lint-js"
+    command: |
+      npm install -g eslint
+      eslint "app/**/*.js"
+    plugins:
+      - docker#v5.11.0:
+          image: "node:20"
+    timeout_in_minutes: 5
+
+  - label: ":html5: HTML Lint"
+    key: "lint-html"
+    command: |
+      npm install -g htmlhint
+      htmlhint "app/**/*.html"
+    plugins:
+      - docker#v5.11.0:
+          image: "node:20"
+    timeout_in_minutes: 5
+
+  - label: ":php: PHP Lint"
+    key: "lint-php"
+    command: |
+      find app -name "*.php" -exec php -l {} \;
+    plugins:
+      - docker#v5.11.0:
+          image: "php:8.2-cli"
+    timeout_in_minutes: 5
