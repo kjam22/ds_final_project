@@ -11,7 +11,7 @@ permissions:
 
 jobs:
   lint:
-    runs-on: ubuntu-latest
+    runs-on: windows-latest
 
     steps:
       - uses: actions/checkout@v4
@@ -23,4 +23,10 @@ jobs:
           coverage: none
 
       - name: Lint PHP files
-        run: find app -name "*.php" -print0 | xargs -0 -n1 php -l
+        shell: pwsh
+        run: |
+          $files = Get-ChildItem -Path app -Filter *.php -Recurse -File
+          foreach ($file in $files) {
+            php -l $file.FullName
+            if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+          }
